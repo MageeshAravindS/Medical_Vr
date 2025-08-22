@@ -23,6 +23,23 @@ public class Collider1 : MonoBehaviour
                 blendShapes.Dissection();
             }
         }
+
+        else if(other.gameObject.name == "stitcher")
+        {
+            if (blendShapes.CanStitch())
+            {
+                blendShapes.isStitching = true;
+                blendShapes.StartStitching();
+            }
+        }
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.name == "stitcher")
+        {
+            blendShapes.isStitching = false;
+        }
     }
 
     /*private void OnCollisionEnter(Collision collision)
